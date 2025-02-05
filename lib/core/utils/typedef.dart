@@ -3,4 +3,4 @@ import 'package:tdd_demo/core/error/failure.dart';
 
 typedef ResultFuture<T> = Future<Either<Failure, T>>;
 
-typedef ResultVoid = ResultFuture<void>;
+typedef ResultVoid =ResultFuture<void>;
