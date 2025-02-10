@@ -3,6 +3,7 @@ import 'package:tdd_demo/core/usecase/usecase.dart';
 import 'package:tdd_demo/core/utils/typedef.dart';
 import 'package:tdd_demo/src/authentication/domain/repositories/auth_repository.dart';
 
+// Use case depends on repo.
 class CreateUser implements UsecaseWithParams<void, CreateUserParams> {
   const CreateUser(this._authRepository);
   final AuthRepository _authRepository;
@@ -26,7 +27,7 @@ class CreateUserParams extends Equatable {
     required this.name,
     required this.avatar,
   });
-
+  const CreateUserParams.empty() : this(createdAt: '', name: '', avatar: '');
   @override
   List<Object?> get props => [createdAt, name, avatar];
 }
