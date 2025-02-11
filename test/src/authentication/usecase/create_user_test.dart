@@ -19,12 +19,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tdd_demo/src/authentication/domain/repositories/auth_repository.dart';
 import 'package:tdd_demo/src/authentication/domain/usecases/create_user.dart';
-
+import 'authentication_repository_mock.dart';
 // Create a mock version of `AuthRepository` for testing.
 // `MockAuthRepo` inherits from `Mock` (provided by Mocktail) and implements the real `AuthRepository`.
 // This allows us to define fake behaviors for repository methods during tests.
-
-class MockAuthRepo extends Mock implements AuthRepository {}
 
 void main() {
   late CreateUser usecase;
@@ -67,9 +65,10 @@ void main() {
       );
 
       verify(() => authRepository.createUser(
-          createdAt: params.createdAt,
-          name: params.name,
-          avatar: params.avatar)).called(1);
+            createdAt: params.createdAt,
+            name: params.name,
+            avatar: params.avatar,
+          )).called(1);
       verifyNoMoreInteractions(authRepository);
     },
   );
